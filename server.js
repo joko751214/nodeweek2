@@ -1,6 +1,6 @@
 const http = require("http");
 const mongoose = require("mongoose");
-const Room = require("./models/room");
+const Post = require("./models/post");
 const statusHandle = require("./statusHandle");
 require("dotenv").config({ path: "./config.env" });
 
@@ -27,24 +27,24 @@ const requestListener = async (req, res) => {
   let body = "";
   req.on("data", (chunk) => (body += chunk));
   if (req.url === "/posts" && req.method === "GET") {
-    const data = await Room.find();
+    const data = await Post.find();
     statusHandle(res, 200, headers, data);
   } else if (req.url === "/posts" && req.method === "POST") {
     req.on("end", async () => {
       try {
-        const data = await Room.create(JSON.parse(body));
+        const data = await Post.create(JSON.parse(body));
         statusHandle(res, 200, headers, data);
       } catch (err) {
         statusHandle(res, 404, headers, [], "格式錯誤");
       }
     });
   } else if (req.url === "/posts" && req.method === "DELETE") {
-    await Room.deleteMany({});
+    await Post.deleteMany({});
     statusHandle(res, 200, headers, []);
   } else if (req.url.startsWith("/posts/") && req.method === "DELETE") {
     const id = req.url.split("/").pop();
     try {
-      await Room.findByIdAndDelete(id);
+      await Post.findByIdAndDelete(id);
       statusHandle(res, 200, headers, null);
     } catch (err) {
       statusHandle(res, 404, headers, [], err);
@@ -53,7 +53,7 @@ const requestListener = async (req, res) => {
     req.on("end", async () => {
       try {
         const id = req.url.split("/").pop();
-        const data = await Room.findByIdAndUpdate(id, JSON.parse(body));
+        const data = await Post.findByIdAndUpdate(id, JSON.parse(body));
         statusHandle(res, 200, headers, data);
       } catch (err) {
         statusHandle(res, 404, headers, [], err);
