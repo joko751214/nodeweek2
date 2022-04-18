@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "aa998eaf-1521-4a69-ac09-785fbf826946",
+		"name": "posts - heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取得所有代辦事項",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://desolate-gorge-38580.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"desolate-gorge-38580",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆代辦事項",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jin\",\r\n    \"tags\": \"旅遊\",\r\n    \"type\": \"group\",\r\n    \"content\": \"九條楊海鮮餐廳\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://desolate-gorge-38580.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"desolate-gorge-38580",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除所有待辦事項",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://desolate-gorge-38580.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"desolate-gorge-38580",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆待辦事項",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://desolate-gorge-38580.herokuapp.com/posts/625d5ffd4edfe26670cdedad",
+					"protocol": "https",
+					"host": [
+						"desolate-gorge-38580",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"625d5ffd4edfe26670cdedad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "編輯單筆待辦事項",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jin\",\r\n    \"tags\": \"旅遊\",\r\n    \"type\": \"group\",\r\n    \"content\": \"九條楊海鮮餐廳123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://desolate-gorge-38580.herokuapp.com/posts/625d603c4edfe26670cdedb8",
+					"protocol": "https",
+					"host": [
+						"desolate-gorge-38580",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"625d603c4edfe26670cdedb8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
